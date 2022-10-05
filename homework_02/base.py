@@ -1,19 +1,30 @@
 from abc import ABC
-#from homework_02 import exceptions
+from homework_02 import exceptions
 
 class Vehicle(ABC):
-    def __init__(self, weight = 10, started = 0, fuel = 100, fuel_consumption = 5):
-        self.weight = weight
-        self.started = started
-        self.fuel = fuel
-        self.fuel_consumption = fuel_consumption
+    def __init__(Self, weight = 10, started = "N", fuel = 40, fuel_consumption = 8):
+        Self.weight = weight
+        Self.started = started
+        Self.fuel = fuel
+        Self.fuel_consumption = fuel_consumption
 
-    def start(self, Vehicle):
-         if self.started == 0:
-             if self.fuel > 0:
-                 return self.started == 1
-             raise LowFuelError ("Недостаточно топлива")
-         print(self.started)
+    def start(Self):
+         if Self.started == "N":
+             if Self.fuel > 0:
+                 return Self.started == "Y"
+             raise exceptions.MyException("Нет топлива")
+         print(Self.started)
 
-Vehicle1 = Vehicle(0,100,5)
+    def move (Self, distance):
+        if Self.fuel >= (int(Self.fuel_consumption)*int(distance)/100):
+            return Self.fuel == (Self.fuel - (int(Self.fuel_consumption)*int(distance)/100))
+        raise exceptions.MyException("Недостаточно топлива")
+
+Vehicle1 = Vehicle(20,"N",10,50)
+
+
+print(Vehicle1.start())
+distance = 60
+
+print(Vehicle1.move(60))
 
