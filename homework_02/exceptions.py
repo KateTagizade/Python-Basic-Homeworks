@@ -4,11 +4,14 @@
 - NotEnoughFuel
 - CargoOverload
 """
-class MyException(Exception):
-    def __init__(self, text):
-        self.txt = text
+class LowFuelError(Exception):
+    pass
 
+class NotEnoughFuel(Exception):
+    pass
 
+class CargoOverload(Exception):
+    pass
 #LowFuelError = "Нет топлива"
 #NotEnoughFuel = "Недостаточно топлива"
 #CargoOverload = "Перегрузка"
