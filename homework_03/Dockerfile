@@ -8,7 +8,7 @@ RUN pip install --upgrade pip
 RUN pip install poetry==1.2.2
 
 RUN poetry config virtualenvs.create false --local
-COPY .. .
+COPY . .
 
 RUN poetry install --only main
 
