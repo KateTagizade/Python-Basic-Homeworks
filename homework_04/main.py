@@ -46,6 +46,8 @@ async def async_main():
             for post in posts:
                 await create_post(session, post)
 
+def main():
+    asyncio.run(async_main())
 
 if __name__ == "__main__":
-    asyncio.run(async_main())
+    main()
