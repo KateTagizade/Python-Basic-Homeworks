@@ -10,7 +10,7 @@
 
 import os
 
-from sqlalchemy import Column, Integer, String, Text, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, create_engine
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, create_async_engine
 
 from sqlalchemy.orm import (
@@ -24,7 +24,7 @@ from sqlalchemy.orm import (
 
 PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
 
-async_engine: AsyncEngine = create_async_engine(url= PG_CONN_URI)
+async_engine: AsyncEngine = create_async_engine (url= PG_CONN_URI)
 
 class Base:
     @declared_attr
@@ -32,9 +32,11 @@ class Base:
         return f"{cls.__name__.lower()}s"
     id = Column(Integer, primary_key=True)
 
-Base = declarative_base(bind=AsyncEngine, cls=Base)
+
+Base = declarative_base (bind=AsyncEngine, cls=Base)
+
 Session = sessionmaker(
-    AsyncEngine,
+    async_engine,
     class_=AsyncSession,
     expire_on_commit=False,
 )
