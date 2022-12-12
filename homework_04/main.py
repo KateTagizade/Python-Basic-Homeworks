@@ -10,7 +10,7 @@
       при помощи asyncio.gather (https://docs.python.org/3/library/asyncio-task.html#running-tasks-concurrently)
 - добавление пользователей и постов в базу данных
   (используйте полученные из запроса данные, передайте их в функцию для добавления в БД)
-- закрытие соединения с БД
+- закрытие соединения с БД.
 """
 import asyncio
 from typing import List, Dict
