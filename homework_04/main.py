@@ -37,7 +37,7 @@ async def create_post(session: AsyncSession, post):
     session.add(post)
 
 
-async def main():
+async def async_main():
     users, posts = await asyncio.gather(get_users_posts(USERS_DATA_URL), get_users_posts(POSTS_DATA_URL))
     async with Session() as session:
         async with session.begin():
@@ -48,4 +48,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(async_main())
