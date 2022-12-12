@@ -22,7 +22,7 @@ from sqlalchemy.orm import (
 )
 
 
-PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
+PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:postgres@0.0.0.0:5432/postgres"
 
 async_engine: AsyncEngine = create_async_engine (url= PG_CONN_URI)
 
@@ -45,13 +45,13 @@ class User(Base):
     name = Column(String, unique=False, nullable=False)
     username = Column(String, unique=True, nullable=False)
     email = Column(String, unique=True, nullable=False)
-    posts = relationship('Post', back_populates='user')
+    posts = relationship("Post", back_populates="user")
 
 class Post(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     title = Column(String, unique=False, nullable=False)
     body = Column(Text, nullable=False, unique=False)
-    user = relationship('User', back_populates='posts')
+    user = relationship("User", back_populates="posts")
 
 
 

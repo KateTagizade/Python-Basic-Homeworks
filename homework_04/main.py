@@ -38,6 +38,7 @@ async def create_post(session: AsyncSession, post):
 
 
 async def async_main():
+    await create_tables()
     users, posts = await asyncio.gather(get_users_posts(USERS_DATA_URL), get_users_posts(POSTS_DATA_URL))
     async with Session() as session:
         async with session.begin():
