@@ -17,8 +17,15 @@ from django.contrib import admin
 from django.urls import path
 
 from services.views import main_page
+from services.views import ServiceListView
+from services.views import ServiceDetailView
+from services.views import ServiceCreateView
+
 
 urlpatterns = [
     path('', main_page),
     path('admin/', admin.site.urls),
+    path('services', ServiceListView.as_view(), name ='services'),
+    path('services/<int:pk>', ServiceDetailView.as_view(), name='service'),
+    path('services/create/', ServiceCreateView.as_view(), name='service_create'),
 ]
