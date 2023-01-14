@@ -16,6 +16,11 @@ class ServiceDetailView (DetailView):
 class ServiceListView (ListView):
     model = Service
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['help_text'] = 'хэлптекст'
+        return context
+
 class ServiceCreateView (CreateView):
     model = Service
     fields = ('name', 'category', 'desc')
