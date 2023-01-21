@@ -8,6 +8,7 @@ from models import db, Service
 from sqlalchemy.exc import IntegrityError
 from werkzeug.exceptions import BadRequest
 
+from flask_migrate import Migrate
 
 app = Flask(
     __name__,
@@ -18,7 +19,7 @@ CONFIG_OBJECT = getenv("CONFIG", "DevelopmentConfig")
 app.config.from_object(f"config.{CONFIG_OBJECT}")
 
 db.init_app(app)
-
+migrate = Migrate(app, db)
 
 @app.cli.command("db-create-all")
 def db_create_all():
