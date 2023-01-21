@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Add service
+{% endblock %}
+
+{% block body %}
+  <div>
+    <div class="h3">Create a new service</div>
+
+    <form method="post">
+      {{ form.name.label(class="form-label")}}
+      {{ form.name(size=20 , class="form-control") }}
+
+      <button class="btn btn-outline-primary my-2"
+              type="submit">
+        Create
+      </button>
+    </form>
+  </div>
+
+{% endblock %}
