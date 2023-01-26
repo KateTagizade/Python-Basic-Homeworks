@@ -1,0 +1,18 @@
+{% extends 'root.html' %}
+
+{% block content %}
+    <h1>список услуг</h1>
+    <ul>
+        {% for service in object_list %}
+        <li>
+            <a href="{% url 'service' pk=service.pk %}">{{service.name}} / {{service.category.name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <p>
+        {{help_text}}
+    </p>
+
+    <a href="{% url 'service_create' %}">Создать</a>
+{% endblock %}

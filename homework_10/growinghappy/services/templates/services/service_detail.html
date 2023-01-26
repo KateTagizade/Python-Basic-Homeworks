@@ -1,0 +1,12 @@
+{% extends 'root.html' %}
+
+{% block content %}
+    <h1>{{object.name}}</h1>
+    <p>
+        {{object.category.name}}
+    </p>
+    <p>
+        {{object.desc}}
+    </p>
+
+{% endblock %}
